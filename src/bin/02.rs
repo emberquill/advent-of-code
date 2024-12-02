@@ -30,9 +30,8 @@ pub fn part_one(input: &str) -> Option<usize> {
 }
 
 pub fn part_two(input: &str) -> Option<usize> {
-    let lines = read_lines(input);
     let mut result: usize = 0;
-    for line in lines {
+    for line in read_lines(input) {
         if test_safety(&line) {
             result += 1;
             continue;

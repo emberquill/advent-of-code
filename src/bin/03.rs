@@ -20,9 +20,11 @@ pub fn part_two(input: &str) -> Option<i32> {
         match instruction {
             "do()" => enabled = true,
             "don't()" => enabled = false,
-            _ => if enabled {
-                let parts: Vec<&str> = split.split(instruction).collect();
-                result += parts[1].parse::<i32>().unwrap() * parts[2].parse::<i32>().unwrap();
+            _ => {
+                if enabled {
+                    let parts: Vec<&str> = split.split(instruction).collect();
+                    result += parts[1].parse::<i32>().unwrap() * parts[2].parse::<i32>().unwrap();
+                }
             }
         }
     }
@@ -41,7 +43,9 @@ mod tests {
 
     #[test]
     fn test_part_two() {
-        let result = part_two(&advent_of_code::template::read_file_part("examples", DAY, 2));
+        let result = part_two(&advent_of_code::template::read_file_part(
+            "examples", DAY, 2,
+        ));
         assert_eq!(result, Some(48));
     }
 }
